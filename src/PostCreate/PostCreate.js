@@ -24,33 +24,38 @@ function PostCreate() {
                     Authorization: UserService.getToken()
                 }
             });
-            history.pushState('/');
+            debugger;
+            history.push('/');
         } catch(err) {
             console.log(err);
         }
     }
     return (
         <div>
-        <h1>Create post</h1>
-        <Formik
-        initialValues={{image: '', description: ''}}
-        validationSchema={PostCreateSchema}
-        onSubmit={submit}>
-            {({ setFieldValue }) => (
-                <Form>
-                    <div>
-                        <input type="file"
-                        id="image"
-                        className="form-control"
-                        onChange={(e) => setFieldValue('image', e.target.files[0])}
-                        />
-                        <Field as="textarea" />
-                        <button>Send</button>
-                    </div>
-                </Form>
-            )}
+            <h1>Create post</h1>
+            <Formik
+                initialValues={{image: '', description: ''}}
+                validationSchema={PostCreateSchema}
+                onSubmit={submit}>
+                {({ setFieldValue, isSubmitting }) => (
+                    <Form>
+                        <div>
+                            <input type="file"
+                                id="image"
+                                name="image"
+                                className="form-control"
+                                onChange={(e) => setFieldValue('image', e.target.files[0])}
+                            />
+                            <Field as="textarea" />
+                            <button type="submit"
+                                disabled={isSubmitting}>
+                                { isSubmitting ? 'Posting...' : 'Post' }
+                            </button>
+                        </div>
+                    </Form>
+                )}
 
-        </Formik>
+            </Formik>
         </div>
 
 

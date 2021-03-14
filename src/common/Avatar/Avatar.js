@@ -5,7 +5,7 @@ import './Avatar.scss';
 
 function Avatar(props) {
 
-    const image = props.image || avatarDefault;
+  /*  const image = props.image || avatarDefault;
     const size = props.size || 'md';
     const className = 'Avatar--' + size;
     
@@ -13,6 +13,14 @@ function Avatar(props) {
         <div>
             <img src= {image} className={'Avatar' + className} alt="avatar" />
         </div>
+    );*/
+
+    const image = props.image || avatarDefault;
+    const size = "Avatar-"+props.size || 'Avatar-md';
+    return (
+
+        <img className={size} src={image} alt="avatar" />
+
     );
 }
 

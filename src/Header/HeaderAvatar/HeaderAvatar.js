@@ -7,13 +7,13 @@ import './HeaderAvatar.scss';
 function HeaderAvatar() {
 
     const { user } = useContext(UserContext);
+
     return (
-        <div>
-            <Link to={'/profile' + user.username}>
+        <div className="HeaderAvatar">
+            <Link to={'/profile/' + user.username}>
                 <Avatar size="md" />
+                <span className="mx-2 HeaderAvatar__username d-none d-lg-block">{ user.username }</span>
             </Link>
-            
-            { user.username }
         </div>
     );
 }

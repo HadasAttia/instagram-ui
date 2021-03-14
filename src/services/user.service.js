@@ -7,18 +7,19 @@ export class UserService {
     return Cookies.get('instagram-user');
   }
 
-    static async me() {
-          const res = await fetch(environment.apiUrl + '/user/me', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: UserService.getToken()
-        },
-      });
-      if (res.status !== 200) {
-        return null;
-      }
-      return await res.json();
+    static me() {
+        return fetch(environment.apiUrl + '/user/me', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: UserService.getToken()
+          },
+        }).then(res => {
+          if (res.status !== 200) {
+            return null;
+          }
+          return res.json();
+        });
     }
 
     static create(data) {
@@ -32,7 +33,7 @@ export class UserService {
     }
 
     static login(credentials) {
-      return fetch(environment.apiUrl + '/login', {
+      return fetch(environment.apiUrl + '/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

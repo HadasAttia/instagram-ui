@@ -10,13 +10,15 @@ function Feed() {
 
     useEffect(() => {
         async function getPosts() {
-            setPosts(await PostService.feed());
+            const posts = await PostService.feed();
+            setPosts(posts);
         }
         getPosts();
     }, []);
 
     return (
-        <div>
+        
+        <div className="row">
             {posts.map(post => (
                 <Post key={post._id} data={post} />
             ))}

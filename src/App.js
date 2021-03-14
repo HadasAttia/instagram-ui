@@ -51,7 +51,7 @@ function App() {
             <Route path="/post/create">
               <PostCreate />
             </Route>
-            <Route path='/post:id'>
+            <Route path='/post/:id'>
               <PostPage />
             </Route>
             <Route path='/profile/:username'>

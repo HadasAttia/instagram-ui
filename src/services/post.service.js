@@ -3,12 +3,13 @@ import environment from '../environments/index';
 
 export class PostService {
 
-    static  feed() {
-        fetch(environment.apiUrl + '/post?sort=-1', {
+    static async feed() {
+        const res = await fetch(environment.apiUrl + '/post?sort=-1', {
             headers: {
                 Authorization: UserService.getToken()
             }
-        }).then(res => res.json());
+        });
+        return await res.json()
     }
 
     static async get(id) {

@@ -27,8 +27,7 @@ function PostPage() {
     
     }, [id]);
 
-    return ( //add Link from end of class #7 assainment  
-
+    return (
         <div>
             { post && <div>
                 <div>
