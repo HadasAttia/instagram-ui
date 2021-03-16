@@ -21,4 +21,25 @@ export class PostService {
             });
             return res.json();
     }
+
+    static async addComment(postId, content) {
+        const res = await fetch(environment.apiUrl + '/post/' + postId + '/comment', {
+            method: 'PUT',
+            headers: {
+                Authorization: UserService.getToken(),
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({ content })
+        });
+        return res.json();
+    }
+
+    static async getComments(postId) {
+        const res = await fetch(environment.apiUrl + '/post/' + postId + '/comment', {
+            headers: {
+                Authorization: UserService.getToken(),
+            }
+        });
+        return res.json();
+    }
 }
